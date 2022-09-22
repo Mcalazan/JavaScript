@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios</title>
+</head>
+<body>
+    <h1>Ejercicios</h1>
+    <script>
+    /*  
+    --------------------EJERCICIO 1-----------------------------------------------
+    //1) Programa una función que cuente el número de caracteres de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+    
+    function ejercicio1 (cadena){
+    if(typeof cadena === 'string' )
+    {
+        console.log(`la cadena tiene ${cadena.length} letras`);}
+        else {
+        console.log("el dato ingresado no es una cadena")
+        
+    }
+}
+
+
+ejercicio1(5)  
+
+const eje1 = (cadena = "") => {console.log(`la cadena tiene ${cadena.length} letras`);}
+//--------------------------------------- ejercicio 2 ------------------------------------------------
+
+2) Programa una función que te devuelva el texto recortado según el número de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
+
+function ejercicio2 (cadena,numero){
+    if(typeof cadena === 'string' )
+    {
+        console.log(`El texto es: ${cadena.slice(0,numero)} `);}
+        else {
+        console.log("el dato ingresado no es una cadena")
+        
+    }
+}
+
+
+
+ejercicio2("Hola Mundo", 4)
+
+function ejercicio2 (cadena,spl){
+    if(typeof cadena === 'string' )
+    {
+        for (let i=0;cadena.length;i++){
+            
+
+
+         }
+         console.log(`El texto es: ${cadena.slice(0,numero)} `);
+    }
+        else {
+        console.log("el dato ingresado no es una cadena")
+        
+    }
+}
+
+function ejercicio3(texto){   
+    console.log(texto.split(' '));
+}
+
+//-----------------------------------EJERCICIO 3---------------------------------
+
+3) Programa una función que dada una String te devuelva un Array de textos separados por cierto caracter, pe. miFuncion('hola que tal', ' ') devolverá ['hola', 'que', 'tal'].
+
+ejercicio3("my name is chicki and marito");
+
+-----------------------------------EJERCICIO 4-----------------------------------
+
+4) Programa una función que repita un texto X veces, pe. miFuncion('Hola Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
+
+function ejercicio4(texto,numero){   
+    console.log(texto.repeat(numero));
+}
+ejercicio4("hola mundo ",4);
+
+-----------------------------------EJERCICIO 5-----------------------------------
+
+5) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+
+const ejercicio5 = (cadena = "") => {console.log(cadena.split("").reverse().join(""))}
+ejercicio5("mario");
+
+-----------------------------------EJERCICIO 6--------------------------------------------
+
+6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+
+ const ejercicio6 = (cadena = "", palabra = "") => {
+
+    let i = 0, contador = 0
+    while(i!==-1){
+        i = cadena.indexOf(palabra,i);
+
+        if(i!==-1){
+        i++;
+        contador++;
+    }
+    }
+   return console.log(contador)
+}
+
+ejercicio6("hola mundo adiios mundo manana mundo y pasado mundo","mundo"); 
+ 
+---------------------------------------EJERCICIO 7 --------------------------------------
+
+7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+
+    const ejercicio7 = (cadena = "") => {
+
+    cadena = cadena.toLowerCase();
+
+    let palabra = cadena.split("").reverse().join("");
+    
+        if(cadena==palabra){
+            console.log("si es paliglota")
+        } else {
+            console.log("no es paliglota")
+        }
+    
+        console.log(palabra)
+}
+
+ejercicio7("salas");  
+ 
+------------------------------------EJERCICIO 8 RECIO-----------------------------------------
+
+8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+
+const ejercicio8 = (texto = "", patron = "") => 
+(!texto) 
+? console.warn("ingresa texto")
+:(!patron)
+?console.warn("ingresa patron")
+:console.log(texto.replace(new RegExp(patron,"ig"),""))
+
+ejercicio8("mi mima","m")
+------------------------------------------------ejercicio 9 ------------------------------------
+
+9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+
+const ejercicio9 = () => console.log(Math.round((Math.random()*100)+501))
+
+ejercicio9();
+
+------------------------------------------------EJERCICIO 10------------------------------------
+
+10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
+
+const ejercicio10 = (numero) => {
+
+    if(typeof numero !== "number"){
+
+        console.error("no es un numero")} else{
+
+    const comparar = numero.toString().split("").reverse().join("");
+    (numero = comparar)
+    ?console.log(true)
+    :console.log(false)
+}
+}
+
+ejercicio10('mario'); 
+
+------------------------------------------------EJERCICIO 11-----------------------------------
+
+11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+
+const ejercicio11 = (numero) =>{
+
+    if (Math.sign(numero)===-1){
+        console.error("solo numero negativos")
+
+    }else{
+
+    let contador = 1;
+    for(i=numero; i>0 ;i--){
+    contador=contador*i
+    }
+
+    return console.log(contador);
+}
+}
+
+ejercicio11(4);
+
+-----------------------------------------------EJERCICIO 12--------------------------------------
+
+12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+
+  const ejercicio12 = (numero = undefined) =>{
+    let divisible = false;
+    for (let i = 2; i<numero; i++)
+    if((numero %i)===0){
+        divisible=true
+        break;
+    }
+    return(divisible)
+    ?console.info("no es primo")
+    :console.log("si es primo")
+ } 
+
+ ejercicio12(10)
+
+---------------------------------------------EJERCICIO 13-------------------------------------- 
+
+13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+
+const ejercicio13 = (numero) => ((numero%2)===0)
+?console.log("es par")
+:console.log("es impar")
+
+ejercicio13(3)
+
+---------------------------------------------EJERCICIO 14---------------------------------------
+
+14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+
+const ejercicio14 = (grados = undefined, unidad = undefined)=>{
+    if (unidad.length !==1 || !/(C|F)/.test(unidad)){
+        return console.warn("valor de la unidad no reconocido")
+} else if (unidad === "C") {
+    return console.log(`${grados} C = ${Math.round((grados*(9/5))+32)}F`)
+} else if (unidad === "F"){
+    return console.log(`${grados} F = ${Math.round(((grados-32)*(5/9)))}C`)
+}
+}
+
+ejercicio14(100,"C");
+
+--------------------------------------------EJERCICIO 15----------------------------------------------
+
+
+15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+
+const ejercicio15 = (numero = undefined, base = undefined) =>
+{
+    if(numero===undefined) return console.warn("no ingresaste ningun numero a convertir");
+    if(typeof numero !== "number") return console.error(`El valor "${numero}" ingresado, No es un numero`);
+    if(base===undefined) return console.warn("no ingresaste ningun numero a convertir");
+    if(typeof base !== "number") return console.error(`El valor "${numero}" ingresado, No es un numero`); 
+
+    if(base===2){
+        return console.info(`${numero} base ${base} = ${parseInt(numero,base)} base 10`)
+    } else if (base === 10){
+        return console.info(`${numero} base ${base} = ${numero.toString(2)} base 2`)       
+    }else{
+        console.error("EL tipo de base a convertir no es VALIDO")
+    }
+
+}
+
+ejercicio15(4,4)
+
+------------------------------------------EJERCICIO 16------------------------------------------
+16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+
+const ejercicio16 = (monto = undefined, descuento = 0) =>  {
+    if(monto===undefined) return console.warn("no ingresaste ningun numero a convertir");
+    if(typeof monto !== "number") return console.error(`El valor "${numero}" ingresado, No es un numero`);
+    if(monto===0) return console.warn("el monto no puede ser 0");
+    
+    return console.info(`${monto} - ${descuento}%  =  ${monto - ((monto * descuento)/100)}`)
+}
+ejercicio16(1000,25)
+
+-------------------------------------------EJERCICIO 17-------------------------------------------
+
+17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+
+const ejercicio17 = (fecha=undefined)=>{
+   if(fecha===undefined) return console.warn("no ingresaste ningun fecha");
+   if (!(fecha instanceof Date)) return console.error("No es una fecha");
+   let ahoraMenosLaFecha = new Date().getTime() - fecha.getTime(),
+   aniosEnMS = 1000 * 60 * 60 * 24 * 365
+   aniosHumanos = Math.floor(ahoraMenosLaFecha / aniosEnMS);
+   return (Math.sign(aniosHumanos)===-1)
+   ?console.info(`Faltan ${Math.abs(aniosHumanos)} anios para el ${fecha.getFullYear()}`)
+   :(Math.sign(aniosHumanos)===1)
+   ?console.info(`Han pasado ${Math.abs(aniosHumanos)} anios, desde ${fecha.getFullYear()}`)
+   : console.info(`Estamos en el anio actual ${fecha.getFullYear()}`)
+}
+
+ejercicio17(new Date(2023,5,24))
+*/
+
+//-------------------------------------------------EJERCICIO 18--------------------------------
+
+//18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5.
+
+/* const ejercicio18 = (frase = "") => {
+    if(frase==="") return console.warn("no ingresaste ninguna cadena de texto");
+    if(typeof frase !== "string") return console.error(`No es una cadena de texto`);
+     console.info(`vocales: ${frase.replace(/[^aeiou]/ig,"").length}`)
+     console.info(`consonante: ${frase.replace(/[aeiou" "]/ig,"").length}`)
+} 
+------------------------------------------------- ejercicio18 manera 2 -------------------------------------------------
+const ejercicio18 = (cadena = "") => {
+    if(cadena==="") return console.warn("no ingresaste ninguna cadena de texto");
+    if(typeof cadena !== "string") return console.error(`No es una cadena de texto`);
+    
+    let ca = 0;
+    let cc = 0;
+    for (let letra of cadena) {
+        if(/[aeiou]/i.test(letra)) ca++;
+        if(/[bcdfghjklmnpqrstvwxyz]/i.test(letra)) cc++;
+    } 
+    return console.info({
+        Frase: cadena,
+        vocales: ca,
+        consonantes: cc})
+    
+} 
+
+ejercicio18("hOla mundo")
+
+
+------------------------------------------MOIIIIIIIIIIIIIIIIIIIIIIIIII----------------------------------
+const ejerciciomoi = (palabra) =>
+{   
+    let contador = 0, almacenar = [], frase = "" ; 
+    for(letra of palabra)
+    {
+        if (letra !== " "){
+        frase=frase+letra;
+        
+        } else {
+        almacenar[contador]=frase;
+        frase = "";
+        contador++;
+        }
+    
+    }
+    almacenar[contador]=frase;
+    console.info(almacenar)
+    
+}
+
+ejerciciomoi("mario y soy grande")
+
+-------------------------------------------EJERCICIO 19-----------------------------------------
+
+19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero.
+
+const ejercicio19 = (nombre="") =>{
+    let expReg = /^[A-Za-z\s]+$/g.test(nombre);
+
+    return(expReg)
+    ?console.info("Nombre valido")
+    :console.warn("Nombre invalido")
+}
+
+ejercicio19("mario calazan")
+
+------------------------------------------------EJERCICIO 20------------------------------
+
+20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero.
+
+const ejercicio20 = (correo) =>{
+    let expReg = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(correo);
+
+    return(expReg)
+    ?console.info("correo valido")
+    :console.warn("correo invalido")
+}
+
+ejercicio20("ochi@gmail.com")
+
+--------------------------------------------EJERCICIO 21----------------------------------
+21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25].
+
+
+const ejercicio21 = (arreglo) =>{
+
+    if(arreglo.length===0) return console.error("El arreglo esta vacio")
+    for (let numero of arreglo){
+        if(typeof numero !== "number")
+        return console.error(`el valor ${numero} no es un numero`);
+    }
+    
+   //  let respuesta = [];
+   // for (let i = 0; i < arreglo.length; i++){
+   //     respuesta[i]=Math.pow(arreglo[i],2)
+  //  } 
+
+    const nuevoArreglo = arreglo.map(el => el*el)
+
+
+    console.log(nuevoArreglo)
+}
+
+ ejercicio21([1,2,3]); 
+
+-------------------------------------EJERCICIO 22--------------------------------------
+22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60].
+
+const ejercicio22 = (arreglo = undefined) =>{
+    if(arreglo.length===0) return console.error("El arreglo esta vacio")
+    for (let numero of arreglo){
+        if(typeof numero !== "number")
+        return console.error(`el valor ${numero} no es un numero`);
+    }
+
+    return console.info(`arreglo original: ${arreglo}\nValor mayor: ${Math.max(...arreglo)}\nValor menor: ${Math.min(...arreglo)}`)
+}
+
+ejercicio22([1,2,3,4])
+ 
+-----------------------------------EJERCICIO 23-----------------------------------------
+23) Programa una función que dado un array de números devuelva un objeto con 2 arreglos en el primero almacena los números pares y en el segundo los impares, pe. miFuncion([1,2,3,4,5,6,7,8,9,0]) devolverá {pares: [2,4,6,8,0], impares: [1,3,5,7,9]}.
+
+
+
+const ejercicio23 = (arreglo) =>{
+    return console.info({
+        pares: arreglo.filter(num=>num%2===0),
+        impares: arreglo.filter(num=>num%2===1)
+    })
+}
+
+ejercicio23([1,2,3,4,5,6])
+
+-------------------------------EJERCICIO 24-------------------------------------
+24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }.
+
+const ejercicio24 = (arr) =>{
+    return console.info({
+        arreglo: arr,
+        ascendente: arr.map(el => el).sort(),
+        descendente: arr.map(el => el).sort().reverse()     
+    })
+}
+
+ejercicio24([2,3,6,5])*/
+
+/* 
+-----------------------------EJERCICIO 25----------------------------------------
+
+25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true].
+
+const ejercicio25 = (arr) =>{
+    if(arr.length === 0) return console.warn("el arreglo esta vacio")
+    return console.info({
+        original: arr,
+        sinduplicado: arr.filter((value,index,self) =>self.indexOf(value)===index)
+    })
+}
+
+ejercicio25([1,2,3,4,4,5]) 
+
+
+const ejercicio25 = (arr) =>{
+    if(arr.length === 0) return console.warn("el arreglo esta vacio")
+    return console.info({
+        original: arr,
+        sinduplicado: [...(new Set(arr))]
+    })
+
+}
+
+-----------------------------------EJERCICIO 26-------------------------------------
+26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5.
+
+const ejercicio26 = (arreglo) =>{
+
+    return console.info(
+        arreglo.reduce((total,num, index, arreglo) =>{
+            total += num
+            if(index === arreglo.length-1){
+                return `El promedio de la lista de estos numeros es ${arreglo.join(" + ")} es ${total/arreglo.length} `;
+
+            } else{
+                return total;
+            }
+        })
+    )
+
+}
+
+
+ejercicio25([1,2,3,4,5,6,7,8,9,0])
+*/
+
+
+const ejercicio5 = (cadena = "") => {console.log(cadena.split(""))}
+ejercicio5("mario");
+
+const palabra = '23'.substr(1, 1);
+
+console.log(palabra)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asincronia en JavaScript</title>
+  </head>
+  <body>
+    <h1>Asincronia en html</h1>
+    <script>
+      /* console.log("inicio");
+        setTimeout(()=>{
+            console.log("Ejectando SetTimeou")
+        },1000)
+
+        setInterval(()=> {
+            console.log("se ejecuta tada intervalo de tiempo")
+        },1000) */
+
+      /*  let temporizador = setTimeout(() => {
+            console.log(new Date().toLocaleTimeString());
+        }, 3000);
+
+        clearTimeout(temporizador); 
+
+        let temporizador = setInterval(()=> {
+            console.log("se ejecuta tada intervalo de tiempo")
+        },1000) 
+
+        clearInterval(temporizador);
+         */
+
+      //funcion sincrono bloqueable
+      /*     (()=>{
+            console.log("Codigo sincrono")
+            console.log("inicio");
+
+            function dos(){
+                console.log("Dos");
+            }
+
+            function uno(){
+                console.log("uno");
+                dos();
+                console.log("tres");
+            }
+
+            uno();
+            console.log("Fin");
+
+         })();
+
+         //funcion asincrono no bloqueable
+         (()=>{
+            console.log("Codigo Asincrono")
+            console.log("inicio");
+
+            function dos(){
+            setTimeout(function(){ console.log("Dos")
+            },1000);}
+
+            function uno(){
+                setTimeout(function () {console.log("uno");
+            },0);
+            
+            dos();
+                console.log("tres");
+            }
+
+            uno();
+            console.log("Fin");
+
+         })(); */
+//---------------------------------------piramide
+      /* function cuadradoCallback(value, callback){
+                setTimeout(() => {
+                callback(value, value*value);  
+            }, 0|Math.random()*1000 );
+         }
+
+        cuadradoCallback(0,(value, result) => {
+        console.log("inicia callback");
+            console.log(`Callbaack: ${value}, ${result}`);
+                cuadradoCallback(1,(value, result) => {
+                console.log(`Callbaack: ${value}, ${result}`);
+                    cuadradoCallback(2,(value, result) => {
+                    console.log(`Callbaack: ${value}, ${result}`);
+                        cuadradoCallback(3,(value, result) => {
+                        console.log(`Callbaack: ${value}, ${result}`);
+                         });
+                    });
+                });
+            });  */
+
+      //----------------------------------------- promise
+      /*  function cuadradoPromise(value){
+                if(typeof value !== "number"){
+                    return Promise.reject(
+                    `Erro el valor ${value} no es un numero`)
+                }   
+                    return new Promise((resolve, reject) =>{
+                    setTimeout(() => {
+                         resolve({
+                          value:value,
+                          result: value*value
+                     }) 
+                 }, 0|Math.random()*100)
+            })
+            }
+                cuadradoPromise(0)
+                .then((obj)=>{
+                    console.log("Inicio promise");
+                    console.log(`Promise: ${obj.value}, ${obj.result}`);
+                    return cuadradoPromise(1)
+                })
+                .then((obj)=>{
+                    console.log(`Promise: ${obj.value}, ${obj.result}`);
+                    return cuadradoPromise("")
+                })
+                .then((obj)=>{
+                    console.log(`Promise: ${obj.value}, ${obj.result}`);
+                    return cuadradoPromise(3)
+                })
+                .then((obj)=>{
+                    console.log(`Promise: ${obj.value}, ${obj.result}`);
+                    return cuadradoPromise(4)
+                })
+                .then((obj)=>{
+                    console.log(`Promise: ${obj.value}, ${obj.result}`);
+                    return cuadradoPromise(5)
+                })
+                .then((obj)=>{
+                    console.log(`Promise: ${obj.value}, ${obj.result}`);
+                    console.log("Fin de la promise");
+                })
+                .catch(err=> console.error(err)); */
+
+      /* function printInformation(name, printAge ){
+                    
+                    console.log(`Name: ${name}`);
+                    printAge(12, 2020)
+               }
+
+               printInformation("moisi",(age,year)=>{
+                console.log(`Age: ${age}`)
+                console.log(`Year: ${year}`)
+               }); */
+
+     //--------------------------------------------asincrona
+    
+        /* function cuadradoPromise(value) {
+        if (typeof value !== 'number') {
+          return Promise.reject(`Erro el valor ${value} no es un numero`);
+        }
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve({
+              value: value,
+              result: value * value
+            });
+          }, 0 | (Math.random() * 100));
+        });
+      }
+
+        async function funcionAsincronaDeclarada(){
+          try{
+            console.log("inicio de Async");
+            let obj = await cuadradoPromise(0);
+            console.log(`Async Function:${obj.value}, ${obj.result} `);
+          
+            obj = await cuadradoPromise(1);
+            console.log(`Async Function:${obj.value}, ${obj.result} `);
+
+            obj = await cuadradoPromise(2);
+            console.log(`Async Function:${obj.value}, ${obj.result} `);
+
+            obj = await cuadradoPromise(3);
+            console.log(`Async Function:${obj.value}, ${obj.result} `);
+
+            obj = await cuadradoPromise(4);
+            console.log(`Async Function:${obj.value}, ${obj.result} `);
+
+            console.log("fin async")
+          }catch(err){
+            console.error(err);
+          }
+        }
+
+        funcionAsincronaDeclarada();
+
+        const funcionAsincronaExpresada = async ()=>{
+          try{
+            console.log("inicio de Async");
+            let obj = await cuadradoPromise(5);
+            console.log(`Async Function:${obj.value}, ${obj.result} `);
+          
+            obj = await cuadradoPromise(6);
+            console.log(`Async Function:${obj.value}, ${obj.result} `);
+
+            obj = await cuadradoPromise(7);
+            console.log(`Async Function:${obj.value}, ${obj.result} `);
+
+            obj = await cuadradoPromise(8);
+            console.log(`Async Function:${obj.value}, ${obj.result} `);
+
+            obj = await cuadradoPromise(9);
+            console.log(`Async Function:${obj.value}, ${obj.result} `);
+
+            console.log("fin async")
+          }catch(err){
+            console.error(err);
+          }
+        } 
+        
+        funcionAsincronaExpresada(); */
+
+       /*  const persona = {
+          nombre:"",
+          apellido:"",
+          edad:0
+        }
+
+        const manejador = {
+          set(obj, prop, valor){
+            if(Object.keys(obj).indexOf(prop) === -1){
+              return console.error(`La propiedad ${prop} no existe en el objeto`)
+            }
+            if((prop === "nombre" || prop === "apellido")&& !(/^[A-Za-z\s]+$/g.test(valor))){
+              return console.error(`La propiedad ${prop} Solo acepta letras y espacios en blanco`)
+           
+            } 
+            obj[prop]=valor;
+          }
+        }
+
+        const jon = new Proxy(persona, manejador);
+        jon.nombre = "jon";
+        jon.apellido = "MirCha";
+        jon.edad = 35;
+        jon.twitter = "@jonmircha";
+        console.log(jon) */
+
+
+        /* const objUsuarios = {
+          propiedad: "Valor",
+          [`id_${Math.round(Math.random()*100+5)}`]:"Valor Aleatorio"
+        };
+
+        console.log(objUsuarios);
+        const usuarios = ["jon", "miguel", "mario","ama"];
+
+        usuarios.forEach((usuario, index) =>objUsuarios[`id_${index}`]=usuario);
+
+        console.log(objUsuarios);
+
+        const objMario = {
+          nombre: "numeros"
+        }
+
+        const mario = [1,2,3,4]
+
+        mario.forEach((index, usu) =>objMario[index] = usu)
+
+        console.log(objMario); */
+
+        /* this.nombre="mario";
+        console.log(nombre) */
+
+       /*  this.lugar="contexto global"
+
+        function saludar(){
+          console.log(`${this.lugar}`)
+        }
+
+        saludar();
+
+        const obj = {
+          lugar:"Contexto Objeto"
+        }
+
+        saludar.call(obj);
+this.nombre = "mario"
+
+        const persona = {
+          nombre:"jon",
+          saludar:function(){
+            console.log(`Hola ${this.nombre}`)
+          }
+        }
+
+
+        persona.saludar();
+
+
+        const otraPersona = {
+          saludar:persona.saludar.bind(this)
+        }
+        otraPersona.saludar() */
+
+
+       // console.log(JSON.parse('me llamo mario'));
+        console.log(JSON.parse('{"cadena":"jon","numero":35,"booleano":true,"arreglo":["correr","programar","cocinar"],"objeto":{"twitter":"@jonmircha","email":"jonmircha@gmail.com"},"nulo":null}'))
+    </script>
+  </body>
+</html>

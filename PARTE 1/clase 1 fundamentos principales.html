@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+</head>
+<body>
+    <h1> buenos dias </h1>
+    <script>
+   /*  
+     let numeros = [10,20,30,40,50,60]
+     const mario = {
+        nombre:"mario",
+        apellido:"calazan",
+        edad: 32
+     }
+
+     for (const propiedad in mario){
+     console.log(`Key:${propiedad}, Value:${mario[propiedad]}`);
+    }
+   
+    for (const elemento of numeros) {
+        console.log(elemento);
+    }
+*/
+/*
+ try {
+    console.log("intentare try catch")
+    hola;
+ } catch (error) {
+    console.log("fallo el");
+    console.log(error);
+ }finally{
+    console.log("mi nombre es mario")
+ } */
+/*
+ try {
+    let numero = "y"
+    if(isNaN(numero)){
+        throw new Error ("El numero no es un numero")
+
+    }
+    console.log(numero*numero)
+ } catch (error) {
+    console.log(`se produjo el siguiente error ${error}`)
+ } */
+ /*      
+ const numero = [1,2,3,4,5,6,7,8,9]
+
+ for(let i=0; i<numero.length; i++){
+    if(i==5){
+        continue;
+    }
+    console.log(i);
+ }*/
+/*
+ let persona = { 
+    nombre: 'mario',
+    apellido: 'calazan',
+    edad: 12
+ }
+ let {nombre, apellido, edad} = persona
+ console.log(nombre, apellido, edad);
+*/
+/*
+let nombre ='mario', edad = 12
+
+const perro ={
+    nombre: nombre,
+    edad: edad,
+    ladrar:function(){
+        console.log('woa woa')
+    }
+}
+
+console.log(perro)
+
+let dog =  {
+    nombre,
+    edad,
+    raza:"callejera",
+    ladrar(){
+        console.log('woa woa woa')   
+    }
+}
+
+console.log(dog)
+
+
+
+dog.ladrar()
+*/
+
+/*function sumar (a,b,...c){
+let resultado = a + b;
+c.forEach(function(n){
+    resultado -= n
+});
+
+return resultado;
+}
+
+console.log(sumar(1,2,3,4,5))
+*/
+/*
+const arr1 = [1,2,3]
+const arr2 = [4,5,6]
+
+const arr3 = [...arr1, ...arr2]
+
+console.log(arr3) 
+
+const saludar = nombre => console.log(`hola ${nombre}`);
+
+saludar("cali");
+
+const suma = (numero1,numero2) => numero1 + numero2;
+
+console.log(suma(1,2))
+
+
+const numeros = [1,2,3,5,6]
+
+numeros.forEach((el,index)=>console.log(`el elemento ${el} esta en ${index}`))
+
+
+const perro = {
+    nombre:'mario',
+    ladrar(){
+    console.log(this)   
+    }
+}
+
+ 
+function perro(nombre, genero, tamanio) {
+    this.super = nombre;
+    this.super(nombre,genero);
+    this.tamanio=tamanio;
+}
+
+
+function Animal(nombre, genero, tamanio) {
+    this.nombre = nombre;
+    this.genero = genero;
+  
+
+    Animal.prototype.sonar = function (){
+        console.log("Hago sonidos por que estoy vivo")
+    }
+
+    Animal.prototype.saludar = function (){
+        console.log(`hola yo soy ${this.nombre}`)
+    }
+}
+
+
+
+perro.prototype.sonar = function (){
+    console.log("Soy un perro y ladro")
+}
+
+Perro.prototype.ladrar =function(){
+    console.log("Guaaa Guaaa");
+}
+
+perro.prototype = new Animal();
+perro.prototype.constructor = perro;
+
+
+const snoopy = new Animal("Snoopy", "Macho","mediano"),
+lolabuny = new Animal("Lola Bunny", "Hembra");
+
+console.log(snoopy);
+console.log(lolabuny);
+
+snoopy.sonar();
+lolabuny.saludar();
+------------------------------------------------------------------------------------------------
+
+function Animal(nombre, genero) {
+    this.nombre = nombre;
+    this.genero = genero;
+}
+
+Animal.prototype.sonar = function (){
+        console.log("Hago sonidos por que estoy vivo")
+    }
+
+    Animal.prototype.saludar = function (){
+        console.log(`hola yo soy ${this.nombre}`)
+    }
+
+//herencia prototipica
+
+function perro (nombre,genero, tamanio){
+
+    this.super=Animal;
+    this.super(nombre,genero);
+    this.tamanio=tamanio;
+}
+
+
+//perro esta herdando de animal
+perro.prototype = new Animal();
+perro.prototype.constructor=perro;
+
+//sobreescritura del metodo del protottipo
+perro.prototype.sonar = function(){
+    console.log("soy un perro y hago woa woa");
+}
+
+perro.prototype.ladrar = function(){
+    console.log("woa woa!!!!!!!!");
+}
+
+
+const snoopy = new perro("Snoopy", "Macho","mediano"),
+lolabuny = new Animal("Lola Bunny", "Hembra");
+
+console.log(snoopy);
+console.log(lolabuny);
+
+snoopy.sonar();
+snoopy.saludar();
+snoopy.ladrar();
+
+lolabuny.saludar();
+lolabuny.sonar();
+=========================================================================================================
+
+class Animal {
+
+    constructor(nombre, genero){
+    this.nombre = nombre;
+    this.genero = genero;
+   
+    }
+
+    sonar(){
+        console.log("Hago sonidos por que estoy vivo")
+    }
+
+    saludar(){
+        console.log(`hola yo soy ${this.nombre}`)
+    }
+  }
+
+
+  class perro extends Animal {
+    constructor (nombre, genero, tamanio){
+    super(nombre, genero);
+    this.tamanio=tamanio;
+    }
+    ladrar(){
+        console.log("woa woa")
+    }
+
+    saludar(){
+        console.log(`Soy un perro ${this.nombre}`)
+    }
+
+    static quesoy(){
+        console.log("Soy un perro el mejor amigo del himbre ")
+    }
+
+    get getRaza(){
+        return this.raza;
+    }
+
+    set setRaza(raza){
+        this.raza=raza;
+    }
+
+
+  }
+  const mimi = new Animal("Mimi", "hembra");
+  const scooby = new perro("scooby", "macho","gigante");
+
+  console.log(mimi);
+  console.log(scooby);
+
+  perro.quesoy();
+
+  scooby.ladrar();
+
+    console.log(scooby.getRaza);
+    scooby.setRaza="dalmata";
+    console.log(scooby.getRaza);
+
+
+
+console.dir(document);
+
+
+console.groupCollapsed("los videos");
+
+console.log("mario");
+console.log("ernesto");
+console.groupEnd();
+
+
+
+console.table(Object.entries(console).sort());
+
+const numeros = [1,2,3,4,5],
+vocales = ["a","e","i","o","u"]
+
+console.table(numeros);
+console.table(vocales);
+
+const perro = {
+
+    nombre:"mario",
+    raza:"dalmata",
+    color:"cafe"
+}
+
+console.table(perro);
+
+
+console.time('hola');
+const arreglo = Array(1000000);
+
+for (let i = 0; i<arreglo.length; i++){
+    arreglo[i] = i;
+}
+
+console.timeEnd('hola');
+
+
+for (let i = 0; i<100; i++){
+    console.count('llevamos: ')
+    console.log(i)
+}
+
+
+let x = 5, y = 4, prueba = "x mayor que y";
+
+console.assert(x<y,{x,y,prueba});
+
+let fecha = new Date();
+let prueba = fecha.getMonth()-2;
+console.log(prueba);
+
+
+function saludar (nombre){
+    nombre=nombre || "desconocido";
+    console.log(`hola ${nombre}`)
+
+}
+
+saludar ();
+
+
+console.log("hola"|| false);
+console.log(0 && "mario");
+
+
+prompt("hola");
+
+
+let cadena = "3 ipsim kasn maskja lorem"
+
+let expe1 = new RegExp("lorem","i")
+let expe2 = /[0-9]/ig;
+
+console.log(expe2.test(cadena));
+
+
+(function(){
+console.log("Mi primer IIFE");
+})();
+
+!function(d,w,c){
+console.log("Soy recio");
+console.log(d);
+}(2,window,console);
+*/
+
+
+function ejercicio1 (cadena){
+    if(typeof cadena === 'string' )
+    {
+        console.log(`la cadena tiene ${cadena.length} letras`);}
+        else {
+        console.log("el dato ingresado no es una cadena")
+        
+    }
+}
+
+ejercicio1("mi nombre es mario calazan")
+
+
+
+
+
+</script>
+</body>
+</html>
