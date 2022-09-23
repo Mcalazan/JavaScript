@@ -34,6 +34,7 @@
             <a href="#seccion12" data-scroll-spy>Video inteligente</a>
             <a href="#seccion13" data-scroll-spy>Validaciones de formulario</a>
             <a href="#seccion14" data-scroll-spy>Geolocalizacion</a>
+            <a href="#seccion15" data-scroll-spy>Narrador</a>
            
         </nav>
       </aside>
@@ -193,7 +194,7 @@
         </section>
         <section id="seccion14" class="section" data-scroll-spy>
           <h2>Validaciones de formulario</h2>
-          <form class="contact-form">
+          <form class="contact-form" action="https://formsubmit.co/calazan99@gmail.com" method="POST" target="_blank">
             <legend>Envianos tu comentario</legend>
             <input type="text" name="name" placeholder="Escribe tu nombre" title="El campo solo acepta letras y espacios en blanco" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
             <input type="email" name="email" placeholder="Email" title="Email incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
@@ -209,11 +210,16 @@
           </form>
         </section>
         <section id="seccion15" class="section" data-scroll-spy>
-          <h2>Geolocalizacion</h2>
+          <h2>Narrador</h2>
+          <select id="speech-select">
+            <option value="">----Elige una voz ----</option>
+          </select>
+          <br><br>
+          <textarea id="speech-text" cols="50" rows="5" placeholder="Ingresar texto para leerlo"></textarea>
+          <br><br>
+          <button id="speech-btn">Leer Texto</button> 
         </section>
       </main>
-
-      
       <button class="scroll-top-btn hidden">&#11014;</button>
       <button class="dark-theme-btn">🌙</button>
    <script src="index_dom.js" type="module">

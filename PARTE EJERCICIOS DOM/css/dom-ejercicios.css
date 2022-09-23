@@ -444,6 +444,10 @@ img{
     animation: show-message 1s 1 normal 0s ease-out both;
 }
 
+.none{
+    display: none;
+}
+
 @keyframes show-message {
     0%{
         visibility: hidden;
