@@ -84,9 +84,6 @@
 })();
 
 
-
-
-
 (()=>{
 
     const $axios = document.getElementById("axios"),
@@ -147,3 +144,16 @@
     getData();
     
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
