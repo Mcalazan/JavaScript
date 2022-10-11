@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selects Anidados</title>
+</head>
+<body>
+    <h1>Selects Anidados</h1>
+    <h2>EL SALVADOR</h2>
+    <label for="select-primary">Estados</label>
+    <select name="primary" id="select-primary">
+        <option value="">Elige un Estado</option>
+    </select>
+    <p></p>
+    <label for="select-secondary">Estados</label>
+    <select name="secondary" id="select-secondary">
+        <option value="">Elige un Municipio</option>
+    </select>
+    <script>
+        const d = document,
+        $selectPrimary = d.getElementById("select-primary"),
+        $selectSecondary = d.getElementById("select-secondary");
+
+        function loadStates(){
+            fetch("https://api.salud.gob.sv/departamentos?idPais%5B%5D=68")
+            .then(res => res.ok ? res.json(): Promise.reject(res))
+            .then(json=>{
+                console.log(json);
+
+                let $options = `<option value="">Elige un Estado</option>`;
+                for(var i=0; i<json.length; i++) { 
+                    $options += `<option value="${json[i].id}">${json[i].nombre}</option>`
+                    $selectPrimary.innerHTML = $options; 
+                }  
+            })
+            .catch(err =>{
+                let message = err.status || "Ocurrio un error";
+            $selectPrimary.nextElementSibling.innerHTML = `Error ${err.status}: ${message}`;
+            })
+        }
+
+        function loadTowns(state){
+            fetch(`https://api.salud.gob.sv/municipios?idDepartamento=${state}`)
+            .then(res => res.ok ? res.json(): Promise.reject(res))
+            .then(json=>{
+                console.log(json);
+
+                let $options = `<option value="">Elige el Municipio</option>`;
+                for(var i=0; i<json.length; i++) { 
+                    $options += `<option value="${json[i].nombre}" data-id="${json[i].id}">${json[i].nombre.slice(0,-2)}</option>`
+                    $selectSecondary.innerHTML = $options; 
+                }  
+        })
+    }
+
+        d.addEventListener("DOMContentLoaded", loadStates);
+
+        $selectPrimary.addEventListener("change", e=> loadTowns(e.target.value));
+
+
+    </script>
+</body>
+</html>
