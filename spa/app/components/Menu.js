@@ -6,6 +6,9 @@ export function Menu(){
     <span>-</spam>
     <a href="#/search">Busqueda</a>
     <span>-</spam>
+    <a href="#/contacto">Contacto</a>
+    
+    <span>-</spam>
     <a href="https://aprendejavascript.org" target="_blank" rel="noopener">Aprede JavaScript</a>
     `;
     return $menu;
