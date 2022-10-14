@@ -2,6 +2,8 @@ import api from "../helpers/wp-api.js";
 import{ ajax } from "../helpers/ajax.js"
 import { PostCard } from "./PostCard.js";
 import { Post } from "./Post.js";
+import { SearchCard } from "./SearchCard.js";
+import { ContactForm } from "./ContactForm.js";
 
 export async function Router(){
 
@@ -28,18 +30,34 @@ export async function Router(){
         }else if(hash.includes("#/search")){
             let query = localStorage.getItem("wpSearch");
 
-            if(!query) return false;
+            if(!query) {
+                d.querySelector(".loader").style.display = "none"
+                return false
+            };
             
             await ajax({
                 url: `${api.SEARCH}/${query}`,
                 cbSuccess: (search) => {
                     console.log(search);
+                    let html = "";
+                    if(search.length === 0){
+                        html=`
+                        <p class="error">
+                        No existen resultados de busqueda
+                        <mark>${query}</mark>
+                        </p>
+                        `;
+                        
+                    } else{
+                        search.forEach((post)=>(html += SearchCard(post)));
+                    }
+                    $main.innerHTML = html;
                 }
                });
 
 
         }else if(hash.includes("#/contacto")){
-            $main.innerHTML = "<h2> Seccion Contacto </h2>";
+            $main.appendChild(ContactForm());
         } else {
             $main.innerHTML = "<h2> Aqui cargara el contenido del Post </h2>";
         
